@@ -188,3 +188,5 @@ This project provides an opportunity to create a coastal risk map for Puerto Ric
 
 ### 4. Doocumentation
 - README.md
+
+[Static Site](https://sofiarha.github.io/PR-SeaLevelRise/)
