@@ -1,7 +1,7 @@
 # Visualizing Sea Level Rise Across Puerto Rico (2015–2025)
 
 ## Project Description
-This project analyzes sea level data from the NOAA Tides & Currents API for Puerto Rico, focusing on four coastal tide stations:
+This project analyzes sea level data from the NOAA (National Oceanic and Atmospheric Administration) Tides & Currents API for Puerto Rico, focusing on four coastal tide stations:
 San Juan (North), Parguera (South), Vieques Island (East), and Mayagüez (West). Using data from January 2015 to January 2025, the 
 primary aim is to identify long-term trends in sea level rise and visualize the regional variations across the island's coasts. By 
 investigating the data, the project seeks to uncover patterns in how natural disasters and environmental change have impacted sea 
