@@ -9,18 +9,51 @@
 <body class="bg-light">
 
   <div class="container py-5">
-    <h1 class="mb-4">Visualizing Sea Level Rise Across Puerto Rico (2015–2025)</h1>
+    <h1 class="mb-4">Visualizing Sea Level Rise Across Puerto Rico (2015 – 2025)</h1>
+      
 
-    
 
-    <h2>📊 Data</h2>
-    <iframe src="Linegraph_4stations.html" width="100%" height="600px"></iframe>
+    <h3>This project explores how sea level has changed over the past decade at four coastal NOAA (National Oceanic and Atmospheric
+        Administration) tide stations in 
+        Puerto Rico: San Juan, Parguera, Vieques, and Mayagüez. Using NOAA Tides and Currents, the sea level is measured in meters relative
+        to a station-specific reference point, and the plots below compare trends and anomalies over time.</h3>
 
-    <h2>🖼️ Images</h2>
-    <img src="PR_Map_final.png" alt="Map of PR with 4 NOAA stations marked">
+    <img src="PR_Map_final.png" alt="Map of PR with 4 NOAA stations marked" class="img-fluid mb-4">
+    <p class="mb-5">The map above shows the location of the four tide stations selected for this project, one in each cardinal direction across Puerto Rico.</p>
 
-    <h2>💻 Scripts / Code</h2>
-    <p><a href="https://github.com/sofiarha/PR-SeaLevelRise" target="_blank">View on Github</a></p>
+    <h2>Data Visualizations Using NOAA's API</h2>
+
+    <div class="graph mb-5">
+      <iframe src="Linegraph_4stations.html" width="100%" height="500px"></iframe>
+      <p class="mt-2">Figure 1: Yearly sea level averages from 2015–2025 at all four stations. MSL
+        measured in meters.
+      </p>
+    </div>
+
+    <div class="graph mb-5">
+      <iframe src="sea_level_chart.html" width="100%" height="500px"></iframe>
+      <p class="mt-2">Figure 2: Average annual sea levels across all stations, showing which regions
+         are experiencing greater changes over time. MSL measured in meters.</p>
+    </div>
+
+    <div class="graph mb-5">
+      <iframe src="Heatmap_PR_monthly.html" width="100%" height="600px"></iframe>
+      <p class="mt-2">Figure 3: Monthly sea level heatmap across all stations. Warmer colors represent higher-than-average sea 
+        levels; cooler colors represent lower levels. The empty boxes indicate absence of recorded data.</p>
+    </div>
+
+    <div style="margin-top: 1rem; font-size: 0.85rem; color: #555;">
+        <p style="margin: 0;">Using data from</p>
+        <a href="https://tidesandcurrents.noaa.gov/" target="_blank" rel="noopener noreferrer">
+          <img src="NOAA_TC-logo.png" alt="NOAA Tides and Currents Logo" style="width: 120px; height: auto; margin-top: 2px;">
+        </a>
+      </div>
+      
+      
+      <p style="text-align: right;">
+        <a href="https://github.com/sofiarha/PR-SeaLevelRise">View on GitHub</a>
+      </p>
+      
   </div>
 
 </body>
