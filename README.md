@@ -32,4 +32,30 @@ insights that can contribute to the ongoing conversation about Puerto Rico’s e
 The project would provide a foundation for future projects that aim to explore the socioeconomic impacts of sea level rise, including real estate development, land use changes, and the vulnerability of coastal communities. Future uses could also involve broadening the amount of time analyzed or geographically expanding to other regions. 
 
 ## Files List:
+### 1. Production Files
+- Bargraph-PR_Yearly_Averages.ipynb
+- Lineplot_PR.ipynb
+- heatmap_PR-monthly.ipynb
+- VIEQUES_Yearly-Averages_FINAL.csv
+- SJ_Yearly-Averages_FINAL.csv
+- MAYAGUEZ_Yearly-Averages_FINAL.csv
+- PARGUERA_Yearly-Averages_FINAL.csv
+- PR_Monthly-Averages_FINAL.csv
+- PR_Yearly_Averages_FINAL.csv
+
+### 2. Output Files
+- Heatmap_PR_monthly.html
+- Linegraph_4stations.html
+- sea_level_chart.html
+- Background.jpeg
+- PR_Map_final.png
+- NOAA_TC-logo.png
+
+### 3. Web Files
+- index.html
+- style.css
+
+### 4. Doocumentation
+- README.md
+
   
