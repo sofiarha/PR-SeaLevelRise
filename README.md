@@ -79,8 +79,6 @@ I saved the yearly singular station averages to a CSV file. I repeated this whol
 yearly_avg.to_csv('yearly_avg_sea_level.csv')
 ```
 
-Here's a generalized and polished continuation from where you left off — suitable for documenting your workflow clearly while reflecting that the process was repeated across multiple stations and then aggregated:
-
 ### 6. Looping Through Multiple Stations:
 To analyze trends across Puerto Rico more broadly, I repeated the data collection and cleaning steps for multiplethe four NOAA tide stations. Using the NOAA assigned station IDs and iterated through them, appending the cleaned data for each into a single DataFrame.
 
@@ -136,7 +134,6 @@ print(monthly_avg)
 print("\nYearly Island-wide Averages:")
 print(yearly_avg)
 ```
-Great — here's a continuation from your previous workflow into the graphing phase, generalized to reflect that this is one of multiple visualizations but follows a consistent process:
 
 ### 10. Visualizing the Results:
 To better understand and communicate the trends in sea level rise across Puerto Rico, I created interactive charts using Plotly. Although I created three different types of visualizations, the general process involved loading the final CSV files and plotting the relevant columns. Below is an example of one of the charts I created — a bar graph of yearly sea level averages.
