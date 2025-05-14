@@ -79,9 +79,88 @@ I saved the yearly singular station averages to a CSV file. I repeated this whol
 yearly_avg.to_csv('yearly_avg_sea_level.csv')
 ```
 
+Here's a generalized and polished continuation from where you left off — suitable for documenting your workflow clearly while reflecting that the process was repeated across multiple stations and then aggregated:
+
+### 6. Looping Through Multiple Stations:
+To analyze trends across Puerto Rico more broadly, I repeated the data collection and cleaning steps for multiplethe four NOAA tide stations. Using the NOAA assigned station IDs and iterated through them, appending the cleaned data for each into a single DataFrame.
+
+```python
+stations = ["9759394", "9759110", "9755371", "9752695"]  # Mayagüez, Parguera, San Juan, Vieques
+all_station_data = pd.DataFrame()
+
+for station_id in stations:
+    params["station"] = station_id
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = response.json()
+        if "data" in data:
+            df = pd.DataFrame(data["data"])
+            df['date'] = pd.to_datetime(df[['year', 'month']].assign(day=1))
+            df["MSL"] = pd.to_numeric(df["MSL"], errors='coerce')
+            df.dropna(subset=["date", "MSL"], inplace=True)
+            df["station"] = station_id
+            all_station_data = pd.concat([all_station_data, df])
+```
+
+### 7. Aggregating Monthly and Yearly Averages:
+After compiling the data from all stations, I calculated overall monthly and yearly averages across the entire island. 
+
+```python
+# Monthly
+all_station_data['year_month'] = all_station_data['date'].dt.to_period('M')
+monthly_avg = all_station_data.groupby('year_month')['MSL'].mean().reset_index()
+monthly_avg["MSL"] = monthly_avg["MSL"].round(3)
+
+# Yearly
+all_station_data['year'] = all_station_data['date'].dt.year
+yearly_avg = all_station_data.groupby('year')['MSL'].mean().reset_index()
+yearly_avg["MSL"] = yearly_avg["MSL"].round(3)
+```
+
+### 8. Saving Aggregated Results:
+I exported the final monthly and yearly island-wide sea level averages to CSV files for documentation or further analysis/visualization.
+
+```python
+monthly_avg.to_csv('monthly_avg_sea_level_data.csv', index=False)
+yearly_avg.to_csv('yearly_avg_sea_level_data.csv', index=False)
+```
+
+### 9. Output Preview:
+I printed both sets of averages for a quick summary view.
+
+```python
+print("Monthly Island-wide Averages:")
+print(monthly_avg)
+
+print("\nYearly Island-wide Averages:")
+print(yearly_avg)
+```
+Great — here's a continuation from your previous workflow into the graphing phase, generalized to reflect that this is one of multiple visualizations but follows a consistent process:
+
+### 10. Visualizing the Results:
+To better understand and communicate the trends in sea level rise across Puerto Rico, I created interactive charts using Plotly. Although I created three different types of visualizations, the general process involved loading the final CSV files and plotting the relevant columns. Below is an example of one of the charts I created — a bar graph of yearly sea level averages.
+
+```python
+import plotly.express as px
+import pandas as pd
+
+df = pd.read_csv('PR_Yearly_Averages_FINAL.csv')
+
+fig = px.bar(
+    df, 
+    x='year', 
+    y='MSL', 
+    title='Yearly Sea Level Averages Across Puerto Rico (2015–2025)',
+    labels={'MSL': 'Mean Sea Level (meters)', 'year': 'Year'}
+)
+
+fig.show()
+fig.write_html("sea_level_chart.html")
+```
 
 ## Further Uses:
-The project would provide a foundation for future projects that aim to explore the socioeconomic impacts of sea level rise, including real estate development, land use changes, and the vulnerability of coastal communities. Future uses could also involve broadening the amount of time analyzed or geographically expanding to other regions. 
+This project provides an opportunity to create a coastal risk map for Puerto Rico, highlighting areas most vulnerable to sea level rise. By visualizing trends in sea level data, we can better understand how coastal communities, infrastructure, and ecosystems are being impacted. This analysis also offers a lens through which to track the influence of U.S. intervention, La Junta, LUMA, and real estate investors in shaping Puerto Rico's coastal resilience. By examining their roles and actions, we can assess whether current policies and investments align with the island's long-term environmental and conservation needs, contributing to broader discussions about sustainable development and disaster preparedness.
 
 ## Files List:
 ### 1. Production Files
@@ -109,5 +188,3 @@ The project would provide a foundation for future projects that aim to explore t
 
 ### 4. Doocumentation
 - README.md
-
-  
